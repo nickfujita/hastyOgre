@@ -12,9 +12,9 @@ module.exports = function (app, express) {
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));
 
-  // app.use('/api/events', eventRouter);
+  app.use('/api/events', eventRouter);
   // app.use(helpers.errorLogger);
   // app.use(helpers.errorHandler);
 
-  // require('../events/eventRoutes.js')(eventRouter);
+  require('../events/eventRoutes.js')(eventRouter);
 };

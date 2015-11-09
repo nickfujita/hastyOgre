@@ -1,7 +1,6 @@
-// var Promise = require('bluebird')
-// var db = require('monk')('localhost/hasty');
-// var events = db.get('events');
+var Promise = require('bluebird');
+var mongoose = Promise.promisifyAll(require('mongoose'));
 
-// Promise.promisifyAll(events);
+ mongoose.connect('mongodb://ogre:m0n3yl0v333@ds043694.mongolab.com:43694/hastyogre');
 
-// module.exports = events;
+module.exports = mongoose;

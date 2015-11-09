@@ -1,10 +1,8 @@
-// var linksController = require('./eventController.js');
+var eventController = require('./eventController.js');
 
-// module.exports = function (app) {
+module.exports = function (app) {
 
-//   app.route('/')
-//     .get(eventController.allEvents)
-//     .post(eventController.newEvents);
+  app.route('/')
+    .get(eventController.allEvents);
 
-
-// };
+};
