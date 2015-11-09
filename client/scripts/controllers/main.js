@@ -45,7 +45,7 @@ angular.module('fbApi.main', [])
   $scope.txtScrlIn = function(event) {
     console.log(this);
     console.log($(this));
-    debugger;
+    // debugger;
     $(this).removeClass("ellipsis");
     // var maxscroll = $(this).width();
     // var speed = maxscroll * 15;
@@ -94,13 +94,14 @@ angular.module('fbApi.main', [])
   });
 
   $scope.enhance = function(event) {
-    Main.getAttendees(event)
-    .then(function(res) {
-      console.log(res.data);
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
+    console.log(JSON.stringify($scope.events));
+    // Main.getAttendees(event)
+    // .then(function(res) {
+    //   console.log(res.data);
+    // })
+    // .catch(function (error) {
+    //   console.error(error);
+    // });
   };
 
 });
