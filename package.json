@@ -2,8 +2,10 @@
   "name": "hastyOgre",
   "version": "0.0.0",
   "description": "",
-  "main": "app.js",
-  "scripts": {},
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.0.5",
