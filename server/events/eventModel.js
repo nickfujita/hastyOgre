@@ -9,7 +9,7 @@ module.exports = {
 
 	get: function(params) {
 		params = params || {};
-		return events.findAsync(params);
+		return events.findAsync(params,{fields: {"demographics.allAttending":0}});
 	},
 
 	insert: function(records) {

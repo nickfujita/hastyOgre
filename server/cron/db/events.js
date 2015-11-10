@@ -1,6 +1,8 @@
+var Promise = require('bluebird');
 var db = require('./mongoLabConnection.js')
 
 var events = db.get('events');
+Promise.promisifyAll(events);
 
 module.exports = {
 

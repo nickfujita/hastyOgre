@@ -38,6 +38,7 @@ locations.get()
 	// return events.insert(flattened);
 	return flattened;
 })
+//getting attendees for all events, running gender analysis on each, and adding them into events collection
 .then(function(eventData) {
 	asyncResults = [];
 	eventData.forEach(function(event) {
@@ -58,17 +59,10 @@ locations.get()
 	console.log('done with all attendee')
 	return Promise.all(asyncResults);
 })
+//insert data into mongo events
 .then(function(eventList) {
-
 	console.log('inserting events into mongo')
 	return events.insert(eventList);
-	// asyncResults = [];
-	// eventList.forEach(function(eventAttendees) {
-	// 	if(eventAttendees.length>0) {
-	// 		asyncResults.push(attendees.insert(eventAttendees));
-	// 	}
-	// });
-	// return Promise.all(asyncResults);
 })
 .then(function() {
 	console.log('fin')
