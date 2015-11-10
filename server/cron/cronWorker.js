@@ -1,9 +1,9 @@
 var fbApi = require('./api/cronFbHelper');
 var locations = require('./db/locations.js');
 var events = require('./db/events.js');
+var attendees = require('./db/attendees.js');
 var locationDetails = require('./db/locationDetails.js');
 var Promise = require('bluebird');
-
 var asyncResults = [];
 
 locations.get()
@@ -34,9 +34,21 @@ locations.get()
 	// return events.insert(flattened);
 	return flattened;
 })
-.then(function(data) {
-	console.log(data);
+.then(function(eventData) {
+	asyncResults = [];
+	eventData.forEach(function(event) {
+  	asyncResults.push(fbApi.getAttendeesByEvent(event.id));
+	});
 	console.log('done with all data insert into events')
+	return Promise.all(asyncResults);
+})
+.then(function(eventAttendees) {
+	console.log('inserting event attendees into mongo')
+	return attendees.insert(eventAttendees);
+	return;
+})
+.then(function() {
+	console.log('fin')
 })
 .catch(function(err) {
 	console.error(err);

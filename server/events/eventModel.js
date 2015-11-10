@@ -3,21 +3,19 @@ var db = require('monk')('mongodb://ogre:m0n3yl0v333@ds043694.mongolab.com:43694
 
 Promise.promisifyAll(db);
 
-var locations = db.get('locations');
+var events = db.get('events');
 
+Promise.promisifyAll(events);
 
-module.exports = locations;
+module.exports = {
 
+	get: function(params) {
+		params = params || {};
+		return events.findAsync(params);
+	},
 
+	insert: function(records) {
+		return events.insertAsync(records);
+	}
 
-
-
-
-
-
-
-// var mongoose = Promise.promisifyAll(require('mongoose'));
-
-// mongoose.connect('mongodb://ogre:m0n3yl0v333@ds043694.mongolab.com:43694/hastyogre');
-
-// module.exports = mongoose;
+}

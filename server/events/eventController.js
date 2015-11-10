@@ -5,11 +5,11 @@ module.exports = {
 
   allEvents: function (req, res, next) {
   	
-    Event.find({})
-    .success(function (events) {
+    Event.get()
+    .then(function (events) {
       res.json(events);
     })
-    .error(function (error) {
+    .catch(function (error) {
       next(error);
     });
   }

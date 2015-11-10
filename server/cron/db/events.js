@@ -10,7 +10,7 @@ module.exports = {
 	},
 
 	insert: function(records) {
-		return events.insert(records);
+		return events.insertAsync(records);
 	}
 
 }
