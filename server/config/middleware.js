@@ -6,7 +6,6 @@ var helpers = require('./helpers.js');
 module.exports = function (app, express) {
  
   var eventRouter = express.Router();
-  var attendeeRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
@@ -14,10 +13,8 @@ module.exports = function (app, express) {
   app.use(express.static(__dirname + '/../../client'));
 
   app.use('/api/events', eventRouter);
-  app.use('/api/attendees', attendeeRouter);
   // app.use(helpers.errorLogger);
   // app.use(helpers.errorHandler);
 
   require('../events/eventRoutes.js')(eventRouter);
-  require('../attendees/attendeeRoutes.js')(attendeeRouter);
 };

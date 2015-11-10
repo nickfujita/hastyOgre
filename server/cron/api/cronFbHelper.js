@@ -22,7 +22,7 @@ module.exports = {
 	},
 
 	getEventsByLocation: function(locationId) {
-		
+		console.log('getting events for: '+locationId);
 		return fb.apiAsync('/'+locationId+'/events',{ since: Math.floor(Date.now() / 1000), limit: 100, fields: 'id,name,place,start_time,cover,attending_count,maybe_count,declined_count,noreply_count'});
 		
 	},
