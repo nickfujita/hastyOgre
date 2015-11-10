@@ -1,5 +1,5 @@
 <div class="content-container" layout="row" flex layout-wrap>
-  <div class="eventCard" ng-repeat="event in events | orderBy: '-attending_count' " flex-gt-sm="100" flex-offset-gt-sm="0" flex-gt-md="80" flex-offset-gt-md="10" flex-gt-lg="50" flex-offset-gt-lg="25">
+  <div class="eventCard" ng-repeat="event in events | orderBy:$parent.sortCategory:$parent.sortOrder " flex-sm="100" flex-offset-sm="0" flex-gt-sm="100" flex-offset-gt-sm="0" flex-gt-md="80" flex-offset-gt-md="10" flex-gt-lg="50" flex-offset-gt-lg="25">
     <md-card>
       <div class='card-img-box'>
         <img ng-src="{{event.cover.source}}" class="md-card-image" alt="Washed Out">
@@ -10,12 +10,6 @@
             <h2 class="md-title ellipse ellipsis" ng-mouseover="txtScrlIn($event)" ng-mouseleave="txtScrlOut()">{{event.name}}</h2>
           </div>
           {{event.place.name}}
-          <md-button class="md-icon-button md-accent" aria-label="Favorite" ng-click="enhance()">
-            <md-icon md-svg-icon="../images/icons/bheart.svg"></md-icon>
-          </md-button>
-          <md-button class="md-icon-button md-accent" aria-label="Favorite">
-            <md-icon md-svg-icon="../images/icons/bnote.svg"></md-icon>
-          </md-button>
           {{event.demographics.genderSummary.male}} - 
           {{event.demographics.genderSummary.female}} - 
           {{event.demographics.genderSummary.unknown}}

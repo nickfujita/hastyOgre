@@ -1,0 +1,77 @@
+<div class="content-container">
+  <md-toolbar class="md-warn md-hue-2">
+    <div class="md-toolbar-tools" layout="row" flex layout-wrap>
+
+      <div class="logo" flex-gt-lg="15" flex-offset-gt-lg="25" flex-gt-md="20" flex-offset-gt-md="10"  flex-gt-sm="30" flex-offset-gt-sm="0" flex-sm="40" flex-offset-sm="0" layout-align="start center">
+
+        <img class="logo" src="./images/ogre.gif">
+
+      </div>
+
+
+    	<div flex-gt-lg="10" flex-offset-gt-lg="25" flex-gt-md="10" flex-offset-gt-md="50"  flex-gt-sm="10" flex-offset-gt-sm="55" flex-sm="10" flex-offset-sm="35" layout="row" layout-align="start center">
+
+
+        <md-menu md-position-mode="target-right target">
+          <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+            <md-icon md-menu-origin md-svg-icon="./images/icons/wevent.svg"></md-icon>
+          </md-button>
+          <md-menu-content width="2">
+            <md-menu-item>
+              <md-button ng-click="dateRange('today')">
+                NOW!
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="dateRange('week')">
+                Soon!
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="dateRange('2weeks')">
+                Soon...ish
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="dateRange('month')">
+                later
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="dateRange('year')">
+                ...
+              </md-button>
+            </md-menu-item>
+          </md-menu-content>
+        </md-menu>
+
+
+
+      	<md-menu md-position-mode="target-right target">
+      	  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
+      	    <md-icon md-menu-origin md-svg-icon="./images/icons/wsort.svg" size="100"></md-icon>
+      	  </md-button>
+      	  <md-menu-content width="2">
+      	    <md-menu-item>
+      	      <md-button ng-click="updateSort('attending_count')">
+      	        Attending
+      	      </md-button>
+      	    </md-menu-item>
+      	    <md-menu-item>
+      	      <md-button ng-click="updateSort('attending_count*((demographics.genderSummary.female>0 ? demographics.genderSummary.female : 1)/(demographics.genderSummary.male>0 ? demographics.genderSummary.male : 1))')">
+      	      	Gender
+      	      </md-button>
+      	    </md-menu-item>
+      	    <md-menu-item>
+      	      <md-button ng-click="updateSort('start_time')">
+      	        Date
+      	      </md-button>
+      	    </md-menu-item>
+      	  </md-menu-content>
+      	</md-menu>
+    	</div>
+    </div>
+  </md-toolbar>
+
+  <div ui-view></div>
+</div>

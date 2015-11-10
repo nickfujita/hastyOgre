@@ -4,6 +4,47 @@ angular.module('fbApi.main', [])
 
 .controller('MainController', function ($scope, Main) {
 
+  // $scope.sortCategory = 'attending_count';
+  // $scope.sortOrder = true;
+  
+  $scope.getEvents = function () {
+    Main.getEvents()
+    .then(function (data) {
+      $scope.events = data;
+    })
+    .catch(function (error) {
+      console.error(error);
+    });
+  };
+
+  $scope.getEvents();
+
+  // $scope.$on('someEvent', function(e) {  
+  //   $scope.$parent.msg = $scope.get();            
+  // });
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // $scope.$watch('eventDetails', function() {
   //   // $(".scroll_on_hover").mouseover(function() {
@@ -43,17 +84,3 @@ angular.module('fbApi.main', [])
   //   //     scrollLeft: 0
   //   // }, 'slow');
   // };
-
-  $scope.getEvents = function () {
-    Main.getEvents()
-    .then(function (data) {
-      $scope.events = data;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  };
-
-  $scope.getEvents();
-
-});
