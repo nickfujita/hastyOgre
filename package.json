@@ -11,8 +11,17 @@
     "bluebird": "^3.0.5",
     "body-parser": "^1.4.3",
     "express": "^4.4.5",
+    "facebook-node-sdk": "^0.2.0",
     "mongodb": "^1.4.39",
     "monk": "^1.0.1",
-    "morgan": "^1.1.1"
+    "morgan": "^1.1.1",
+    "request": "^2.65.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.1.2",
+    "grunt": "^0.4.5",
+    "grunt-babel": "^6.0.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^3.3.0"
   }
 }

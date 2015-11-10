@@ -6,10 +6,10 @@ module.exports = {
   allEvents: function (req, res, next) {
   	
     Event.find({})
-    .then(function (events) {
+    .success(function (events) {
       res.json(events);
     })
-    .fail(function (error) {
+    .error(function (error) {
       next(error);
     });
   }
