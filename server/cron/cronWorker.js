@@ -7,6 +7,7 @@ var Promise = require('bluebird');
 var asyncResults = [];
 
 locations.get()
+//getting all locations
 .then(function(data) {
 	console.log('just for the data from mongo');
 	data.forEach(function(location,i) {
@@ -15,10 +16,12 @@ locations.get()
 
 	return Promise.all(asyncResults);
 })
+//getting location details
 .then(function(locationDetails) {
 	// return locationDetails.insert(locationDetails);
 	return locationDetails;
 })
+//getting events by location with event details
 .then(function(locationDetails) {
 	asyncResults = [];
 	locationDetails.forEach(function(location) {
@@ -27,6 +30,7 @@ locations.get()
 
 	return Promise.all(asyncResults);
 })
+//flattening results by location into one array of events
 .then(function(eventsResults) {
 	var flattened = eventsResults.reduce(function(a, b) {
 	  return a.concat(b.data);
@@ -37,15 +41,34 @@ locations.get()
 .then(function(eventData) {
 	asyncResults = [];
 	eventData.forEach(function(event) {
-  	asyncResults.push(fbApi.getAttendeesByEvent(event.id));
+  	asyncResults.push(new Promise(function(resolve, reject) {
+
+  		fbApi.getAttendeesByEvent(event.id)
+  		.then(function(data) {
+  			event.demographics = data;
+  			resolve(event);
+  		})
+  		.catch(function(err) {
+  			console.error(err);
+  			reject(err);
+  		});
+
+  	}));
 	});
-	console.log('done with all data insert into events')
+	console.log('done with all attendee')
 	return Promise.all(asyncResults);
 })
-.then(function(eventAttendees) {
-	console.log('inserting event attendees into mongo')
-	return attendees.insert(eventAttendees);
-	return;
+.then(function(eventList) {
+
+	console.log('inserting events into mongo')
+	return events.insert(eventList);
+	// asyncResults = [];
+	// eventList.forEach(function(eventAttendees) {
+	// 	if(eventAttendees.length>0) {
+	// 		asyncResults.push(attendees.insert(eventAttendees));
+	// 	}
+	// });
+	// return Promise.all(asyncResults);
 })
 .then(function() {
 	console.log('fin')

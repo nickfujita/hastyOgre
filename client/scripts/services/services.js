@@ -21,8 +21,25 @@ angular.module('fbApi.services', [])
 
   };
 
+  var getAttendees = function () {
+
+    return $http({
+      method: 'GET',
+      url: '/api/attendees'
+    })
+    .then(function (res) {
+      return res.data;
+    })
+    .catch(function (err) {
+      console.error(err);
+    })
+    ;
+
+  };
+
   return {
-    getEvents: getEvents
+    getEvents: getEvents,
+    getAttendees: getAttendees
   };
 
 });

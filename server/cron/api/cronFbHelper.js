@@ -31,9 +31,14 @@ module.exports = {
 
 		return new Promise(function(resolve, reject) {
 
-			var allAttending = {
-				eventId: eventId,
-				attendees: []
+			var eventList = {
+				// eventId: eventId,
+				genderSummary: {
+					male: 0,
+					female: 0,
+					unknown: 0
+				},
+				allAttending: []
 			};
 
 			var recurse = function(url) {
@@ -53,17 +58,21 @@ module.exports = {
 							// console.log(res.data);
 
 							res.data.forEach(function(person) {
-								person.gender = gender.guess(person.name)
-								allAttending.attendees.push(person);
+								person.eventId = eventId;
+								person.gender = gender.guess(person.name);
+								eventList.genderSummary[person.gender.gender] +=1;
+								eventList.allAttending.push(person);
 							})
 
 							recurse(res.paging.next);
 						} else {
 							res.data.forEach(function(person) {
-								person.gender = gender.guess(person.name)
-								allAttending.attendees.push(person);
+								person.eventId = eventId;
+								person.gender = gender.guess(person.name);
+								eventList.genderSummary[person.gender.gender] +=1;
+								eventList.allAttending.push(person);
 							})
-							resolve(allAttending);
+							resolve(eventList);
 						}
 					}
 				});
