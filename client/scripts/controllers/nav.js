@@ -32,12 +32,14 @@ angular.module('fbApi.nav', [])
         currentCategory = $scope.maleRatio;
       }
 
+      currentOrder = true;
+
     } else {
     	if(currentCategory === category) {
     		currentOrder = !currentOrder;
     	} else {
     		currentCategory = category;
-    		currentOrder = $scope.sortCategory === 'start_time' ? false : true;
+    		currentOrder = $scope.sortCategory === 'start_time' ? true : false;
     	}
     }
 
