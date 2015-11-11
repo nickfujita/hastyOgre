@@ -6,6 +6,7 @@ angular.module('fbApi.main', [])
 
   // $scope.sortCategory = 'attending_count';
   // $scope.sortOrder = true;
+  // $scope.today = new Date();
   
   $scope.getEvents = function () {
     Main.getEvents()
@@ -19,12 +20,33 @@ angular.module('fbApi.main', [])
 
   $scope.getEvents();
 
-  // $scope.$on('someEvent', function(e) {  
-  //   $scope.$parent.msg = $scope.get();            
-  // });
+  $scope.getRatio = function (a, total) {
+    var temp = 5*Math.round(((a/total)*100)/5)
+    return temp;
+  };
+
+})
+
+
+.filter('dateFilter', function(){
+  var filter = function(items, field, days){
+    var timeStart = Date.now();
+    var timeEnd = Date.now() + (days * 86400000); // 1 day in ms
+    if(items) {
+      return items.filter(function(item){
+        var itemDate = new Date(item[field]);
+        return (itemDate > timeStart && itemDate < timeEnd);
+      });
+    } else {
+      return items;
+    }
+  };
+
+  // filter.$stateful = true;
+
+  return filter;
 
 });
-
 
 
 

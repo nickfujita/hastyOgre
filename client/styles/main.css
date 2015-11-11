@@ -22,8 +22,8 @@ height: 600px;
  text-overflow: ellipsis;
 }
 
-.eventTitle-enter {
-
+.eventCardContent {
+  background-color: #E0E0E0;
 }
 
 .eventTitle-enter.eventTitle-enter-active {
@@ -34,9 +34,6 @@ height: 600px;
   background-color: #303030;
 }
 
-md-toolbar {
-  background-color: red;
-}
 
 .logo {
   height: 100%;
@@ -44,4 +41,21 @@ md-toolbar {
   width: 50%;
   display: block;
   overflow: hidden;
+}
+
+.male {
+  background-color: #003D99;
+  color: #003D99;
+  opacity: 0.3;
+}
+
+.female {
+  background-color: #C62828;
+  color: #C62828;
+  opacity: 0.3;
+}
+
+
+.eventTitle {
+  color: black;
 }

@@ -14,31 +14,36 @@
 
         <md-menu md-position-mode="target-right target">
           <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-            <md-icon md-menu-origin md-svg-icon="./images/icons/wevent.svg"></md-icon>
+            <md-icon md-menu-origin md-svg-icon="./images/icons/bevent.svg"></md-icon>
           </md-button>
           <md-menu-content width="2">
             <md-menu-item>
-              <md-button ng-click="dateRange('today')">
+              <md-button ng-click="changeDate('today')">
                 NOW!
               </md-button>
             </md-menu-item>
             <md-menu-item>
-              <md-button ng-click="dateRange('week')">
+              <md-button ng-click="changeDate('3days')">
                 Soon!
               </md-button>
             </md-menu-item>
             <md-menu-item>
-              <md-button ng-click="dateRange('2weeks')">
+              <md-button ng-click="changeDate('week')">
                 Soon...ish
               </md-button>
             </md-menu-item>
             <md-menu-item>
-              <md-button ng-click="dateRange('month')">
+              <md-button ng-click="changeDate('2weeks')">
                 later
               </md-button>
             </md-menu-item>
             <md-menu-item>
-              <md-button ng-click="dateRange('year')">
+              <md-button ng-click="changeDate('month')">
+                way later
+              </md-button>
+            </md-menu-item>
+            <md-menu-item>
+              <md-button ng-click="changeDate('year')">
                 ...
               </md-button>
             </md-menu-item>
@@ -49,7 +54,7 @@
 
       	<md-menu md-position-mode="target-right target">
       	  <md-button aria-label="Open phone interactions menu" class="md-icon-button" ng-click="openMenu($mdOpenMenu, $event)">
-      	    <md-icon md-menu-origin md-svg-icon="./images/icons/wsort.svg" size="100"></md-icon>
+      	    <md-icon md-menu-origin md-svg-icon="./images/icons/bsort.svg" size="100"></md-icon>
       	  </md-button>
       	  <md-menu-content width="2">
       	    <md-menu-item>
@@ -58,7 +63,7 @@
       	      </md-button>
       	    </md-menu-item>
       	    <md-menu-item>
-      	      <md-button ng-click="updateSort('attending_count*((demographics.genderSummary.female>0 ? demographics.genderSummary.female : 1)/(demographics.genderSummary.male>0 ? demographics.genderSummary.male : 1))')">
+      	      <md-button ng-click="updateSort('gender')">
       	      	Gender
       	      </md-button>
       	    </md-menu-item>
